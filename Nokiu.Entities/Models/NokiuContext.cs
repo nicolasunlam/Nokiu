@@ -15,7 +15,7 @@ namespace Nokiu.Entities.Models
         {
         }
 
-        public virtual DbSet<Adress> Adress { get; set; }
+        public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Appointment> Appointment { get; set; }
         public virtual DbSet<AppointmentProduct> AppointmentProduct { get; set; }
         public virtual DbSet<Attribute> Attribute { get; set; }
@@ -25,7 +25,7 @@ namespace Nokiu.Entities.Models
         public virtual DbSet<Contact> Contact { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<DocType> DocType { get; set; }
-        public virtual DbSet<Employeed> Employeed { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Module> Module { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Owner> Owner { get; set; }
@@ -42,7 +42,7 @@ namespace Nokiu.Entities.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-RIFDK0F\\SQLEXPRESS;Database=Nokiu;Trusted_Connection=True;");
             }
         }
 
@@ -77,11 +77,11 @@ namespace Nokiu.Entities.Models
 
             modelBuilder.Entity<Business>(entity =>
             {
-                entity.HasOne(d => d.Adress)
+                entity.HasOne(d => d.Address)
                     .WithMany(p => p.Business)
-                    .HasForeignKey(d => d.AdressId)
+                    .HasForeignKey(d => d.AddressId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_BUSINESS_REFERENCE_ADRESS");
+                    .HasConstraintName("FK_BUSINESS_REFERENCE_ADDRESS");
 
                 entity.HasOne(d => d.Company)
                     .WithMany(p => p.Business)
@@ -100,11 +100,11 @@ namespace Nokiu.Entities.Models
 
             modelBuilder.Entity<Company>(entity =>
             {
-                entity.HasOne(d => d.Adress)
+                entity.HasOne(d => d.Address)
                     .WithMany(p => p.Company)
-                    .HasForeignKey(d => d.AdressId)
+                    .HasForeignKey(d => d.AddressId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_COMPANY_REFERENCE_ADRESS");
+                    .HasConstraintName("FK_COMPANY_REFERENCE_ADDRESS");
 
                 entity.HasOne(d => d.DocType)
                     .WithMany(p => p.Company)
@@ -128,13 +128,13 @@ namespace Nokiu.Entities.Models
                     .HasConstraintName("FK_CUSTOMER_REFERENCE_PERSON");
             });
 
-            modelBuilder.Entity<Employeed>(entity =>
+            modelBuilder.Entity<Employee>(entity =>
             {
                 entity.HasOne(d => d.Person)
-                    .WithMany(p => p.Employeed)
+                    .WithMany(p => p.Employee)
                     .HasForeignKey(d => d.PersonId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_EMPLOYEED_REFERENCE_PERSON");
+                    .HasConstraintName("FK_EMPLOYEE_REFERENCE_PERSON");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -154,7 +154,7 @@ namespace Nokiu.Entities.Models
             modelBuilder.Entity<Person>(entity =>
             {
                 entity.HasIndex(e => e.DocNumber)
-                    .HasName("UQ__Person__DA35A0AB4F89CF89")
+                    .HasName("UQ__Person__DA35A0AB286AFD39")
                     .IsUnique();
 
                 entity.HasIndex(e => new { e.LastName, e.FirstName })
@@ -162,10 +162,10 @@ namespace Nokiu.Entities.Models
 
                 entity.Property(e => e.DateLogin).HasDefaultValueSql("(getdate())");
 
-                entity.HasOne(d => d.Adress)
+                entity.HasOne(d => d.Address)
                     .WithMany(p => p.Person)
-                    .HasForeignKey(d => d.AdressId)
-                    .HasConstraintName("FK_PERSON_REFERENCE_ADRESS");
+                    .HasForeignKey(d => d.AddressId)
+                    .HasConstraintName("FK_PERSON_REFERENCE_ADDRESS");
 
                 entity.HasOne(d => d.DocType)
                     .WithMany(p => p.Person)

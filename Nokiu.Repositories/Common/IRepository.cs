@@ -2,7 +2,7 @@
 
 namespace Repositories
 {
-    interface IRepositorio<T>
+    interface IRepository<T>
     {
         void Save(T t);
 

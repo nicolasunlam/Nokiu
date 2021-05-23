@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Repositories
 {
-    public abstract class BaseRepository<T> : IRepositorio<T> where T : class
+    public abstract class BaseRepository<T> : IRepository<T> where T : class
     {
         protected NokiuContext ctx;
         private readonly DbSet<T> dbSet;

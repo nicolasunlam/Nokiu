@@ -13,14 +13,14 @@ GO
 		Id                   int                 identity,
 		FirstName            nvarchar(80)        not null,
 		LastName             nvarchar(250)       not null,
-		PersonName             nvarchar(150)       not null,
+		PersonName           nvarchar(150)       not null,
 		Password			 nvarchar(40)		 not null, 
 		Email				 nvarchar(150)		 not null, 
 		Phone				 nvarchar(50)		 not null, 
 		DocNumber			 nvarchar(30)        unique,
 		DateLogin			 datetime			 default getdate(),
 		Photo				 nvarchar(250)		 , 
-		AdressId			 int                 ,
+		AddressId			 int                 ,
 		DocTypeId			 int                 ,
 		RoleId				 int				 not null
    
@@ -42,12 +42,12 @@ GO
 	)
 	GO
 
-	CREATE TABLE "Employeed" (
+	CREATE TABLE "Employee" (
 	   Id		 int identity,
 	   PersonId  int not null,
 	   CompanyId int not null
   
-	  CONSTRAINT PK_EMPLOYEED PRIMARY KEY (Id)
+	  CONSTRAINT PK_EMPLOYEE PRIMARY KEY (Id)
 	)
 	GO
 
@@ -67,7 +67,7 @@ GO
 	)
 	GO
 
-	CREATE TABLE "Adress" (
+	CREATE TABLE "Address" (
 	   Id			int				identity,
 	   StreetNumber	nvarchar(50)	not null,
 	   StreetName	nvarchar(50)	not null,
@@ -78,7 +78,7 @@ GO
 	   Latitude		nvarchar(50)	,
 	   Longitude	nvarchar(50)	
   
-	  CONSTRAINT PK_ADRESS PRIMARY KEY (Id)
+	  CONSTRAINT PK_ADDRESS PRIMARY KEY (Id)
 	)
 	GO
 
@@ -87,7 +87,7 @@ GO
 	   Name		 nvarchar(50) not null,
 	   DocNumber nvarchar(50) not null,
 	   DocTypeId int		  not null,
-	   AdressId  int		  not null,
+	   AddressId  int		  not null,
 	   PersonId  int		  not null
   
 	  CONSTRAINT PK_COMPANY PRIMARY KEY (Id)
@@ -121,7 +121,7 @@ GO
 	   RazonSocial	nvarchar(50) not null,
 	   Cuit			nvarchar(50) not null,
 	   CompanyId	int			 not null,
-	   AdressId		int			 not null
+	   AddressId		int			 not null
 	  
 	  CONSTRAINT PK_BUSINESS PRIMARY KEY (Id)
 	)
@@ -239,9 +239,9 @@ GO
 		REFERENCES DocType (Id)
 	GO
 	ALTER TABLE "Person"
-	   ADD CONSTRAINT FK_PERSON_REFERENCE_ADRESS 
-		FOREIGN KEY (AdressId)
-		REFERENCES Adress (Id)
+	   ADD CONSTRAINT FK_PERSON_REFERENCE_ADDRESS 
+		FOREIGN KEY (AddressId)
+		REFERENCES Address (Id)
 	GO
 
 	ALTER TABLE "Owner"
@@ -250,8 +250,8 @@ GO
 		REFERENCES "Person" (Id)
 	GO
 
-	ALTER TABLE "Employeed"
-	   ADD CONSTRAINT FK_EMPLOYEED_REFERENCE_PERSON 
+	ALTER TABLE "Employee"
+	   ADD CONSTRAINT FK_EMPLOYEE_REFERENCE_PERSON 
 		FOREIGN KEY (PersonId)
 		REFERENCES Person (Id)
 	GO
@@ -273,9 +273,9 @@ GO
 		REFERENCES DocType (Id)
 	GO
 	ALTER TABLE "Company"
-	   ADD CONSTRAINT FK_COMPANY_REFERENCE_ADRESS 
-		FOREIGN KEY (AdressId)
-		REFERENCES Adress (Id)
+	   ADD CONSTRAINT FK_COMPANY_REFERENCE_ADDRESS 
+		FOREIGN KEY (AddressId)
+		REFERENCES Address (Id)
 	GO
 
 	ALTER TABLE "Business"
@@ -284,9 +284,9 @@ GO
 		REFERENCES Company (Id)
 	GO
 	ALTER TABLE "Business"
-	   ADD CONSTRAINT FK_BUSINESS_REFERENCE_ADRESS 
-		FOREIGN KEY (AdressId)
-		REFERENCES Adress (Id)
+	   ADD CONSTRAINT FK_BUSINESS_REFERENCE_ADDRESS 
+		FOREIGN KEY (AddressId)
+		REFERENCES Address (Id)
 	GO
 
 	ALTER TABLE "Service"

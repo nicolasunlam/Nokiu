@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Nokiu.Entities.Models
 {
-    public partial class Employeed
+    public partial class Employee
     {
         [Key]
         public int Id { get; set; }
@@ -13,7 +13,7 @@ namespace Nokiu.Entities.Models
         public int CompanyId { get; set; }
 
         [ForeignKey(nameof(PersonId))]
-        [InverseProperty("Employeed")]
+        [InverseProperty("Employee")]
         public virtual Person Person { get; set; }
     }
 }

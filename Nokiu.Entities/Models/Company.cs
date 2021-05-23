@@ -21,12 +21,12 @@ namespace Nokiu.Entities.Models
         [StringLength(50)]
         public string DocNumber { get; set; }
         public int DocTypeId { get; set; }
-        public int AdressId { get; set; }
+        public int AddressId { get; set; }
         public int PersonId { get; set; }
 
-        [ForeignKey(nameof(AdressId))]
+        [ForeignKey(nameof(AddressId))]
         [InverseProperty("Company")]
-        public virtual Adress Adress { get; set; }
+        public virtual Address Address { get; set; }
         [ForeignKey(nameof(DocTypeId))]
         [InverseProperty("Company")]
         public virtual DocType DocType { get; set; }

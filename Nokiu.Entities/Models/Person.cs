@@ -11,7 +11,7 @@ namespace Nokiu.Entities.Models
         {
             Company = new HashSet<Company>();
             Customer = new HashSet<Customer>();
-            Employeed = new HashSet<Employeed>();
+            Employee = new HashSet<Employee>();
             Owner = new HashSet<Owner>();
         }
 
@@ -41,13 +41,13 @@ namespace Nokiu.Entities.Models
         public DateTime? DateLogin { get; set; }
         [StringLength(250)]
         public string Photo { get; set; }
-        public int? AdressId { get; set; }
+        public int? AddressId { get; set; }
         public int? DocTypeId { get; set; }
         public int RoleId { get; set; }
 
-        [ForeignKey(nameof(AdressId))]
+        [ForeignKey(nameof(AddressId))]
         [InverseProperty("Person")]
-        public virtual Adress Adress { get; set; }
+        public virtual Address Address { get; set; }
         [ForeignKey(nameof(DocTypeId))]
         [InverseProperty("Person")]
         public virtual DocType DocType { get; set; }
@@ -59,7 +59,7 @@ namespace Nokiu.Entities.Models
         [InverseProperty("Person")]
         public virtual ICollection<Customer> Customer { get; set; }
         [InverseProperty("Person")]
-        public virtual ICollection<Employeed> Employeed { get; set; }
+        public virtual ICollection<Employee> Employee { get; set; }
         [InverseProperty("Person")]
         public virtual ICollection<Owner> Owner { get; set; }
     }

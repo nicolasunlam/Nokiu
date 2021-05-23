@@ -24,11 +24,11 @@ namespace Nokiu.Entities.Models
         [StringLength(50)]
         public string Cuit { get; set; }
         public int CompanyId { get; set; }
-        public int AdressId { get; set; }
+        public int AddressId { get; set; }
 
-        [ForeignKey(nameof(AdressId))]
+        [ForeignKey(nameof(AddressId))]
         [InverseProperty("Business")]
-        public virtual Adress Adress { get; set; }
+        public virtual Address Address { get; set; }
         [ForeignKey(nameof(CompanyId))]
         [InverseProperty("Business")]
         public virtual Company Company { get; set; }

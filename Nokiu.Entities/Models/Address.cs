@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Nokiu.Entities.Models
 {
-    public partial class Adress
+    public partial class Address
     {
-        public Adress()
+        public Address()
         {
             Business = new HashSet<Business>();
             Company = new HashSet<Company>();
@@ -38,11 +38,11 @@ namespace Nokiu.Entities.Models
         [StringLength(50)]
         public string Longitude { get; set; }
 
-        [InverseProperty("Adress")]
+        [InverseProperty("Address")]
         public virtual ICollection<Business> Business { get; set; }
-        [InverseProperty("Adress")]
+        [InverseProperty("Address")]
         public virtual ICollection<Company> Company { get; set; }
-        [InverseProperty("Adress")]
+        [InverseProperty("Address")]
         public virtual ICollection<Person> Person { get; set; }
     }
 }
