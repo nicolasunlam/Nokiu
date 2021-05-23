@@ -11,11 +11,11 @@
 
 ​		-Click derecho en el proyecto y luego click en unload o (descargar ESP). En todos excepto en 			Nokiu.Entities
 
-​			![image-20210523123417032](C:\Users\Usuario\AppData\Roaming\Typora\typora-user-images\image-20210523123417032.png)
+​			https://drive.google.com/file/d/1neItjGza7G_snqEA0PJDhXMd54tOk398/view?usp=sharing
 
 -Luego abrir la consola de Administracion de paquetes Nuget
 
-![image-20210523123720750](C:\Users\Usuario\AppData\Roaming\Typora\typora-user-images\image-20210523123720750.png)
+      https://drive.google.com/file/d/1NQibvZsItLIV1afUgi9wViv67ms9AAQW/view?usp=sharing
 
 Si tienen autorización con Windows en su SQL Server tienen que introducir la sentencia :
 
@@ -25,13 +25,13 @@ Scaffold-DBContext "Server=Tu_Server;Database=Nokiu;Trusted_Connection=True;" Mi
 
 
 
-![image-20210523124230968](C:\Users\Usuario\AppData\Roaming\Typora\typora-user-images\image-20210523124230968.png)
+    https://drive.google.com/file/d/11Q4NTYM9xb5wE_AmHn3YegkllBvxRo4e/view?usp=sharing
 
 
 
 Le dan Enter y seguramente les pida instalar los siguientes Packetes Nuget si no los tienen instalados. Usen las versiones que aparecen a continuación:
 
-![image-20210523124406095](C:\Users\Usuario\AppData\Roaming\Typora\typora-user-images\image-20210523124406095.png)
+  https://drive.google.com/file/d/1LwdrHRI8dRdfZ8rxBUPBTUMHCGdtL6F3/view?usp=sharing
 
 Listo.
 
