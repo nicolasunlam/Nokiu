@@ -2,7 +2,7 @@
 
 ## Pasos para deploy del proyecto y conectarse al Repositorio 
 
-1-Clonar el proyecto con Visual Studio 2019
+1-Clonar el proyecto con Visual Studio 2019. 
 
 2-Abrir la solución y desde VS => Extensiones, instalar Github. Seguir los pasos, reiniciar si es necesario.
   video de Referencia https://youtu.be/560GOf3f6xk
@@ -36,3 +36,8 @@ Le dan Enter y seguramente les pida instalar los siguientes Packetes Nuget si no
 Listo.
 
 4-Volver a cargar todos los otros proyectos con click derecho Load project o Cargar proyecto
+
+## No se olviden de hacer Pull desde Master para ver si hay cambios una vez que se clonan el repo.
+
+
+
