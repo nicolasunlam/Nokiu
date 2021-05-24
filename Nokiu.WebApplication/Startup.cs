@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nokiu.Entities.Models;
 
 namespace Nokiu.WebApplication
 {
@@ -19,8 +21,9 @@ namespace Nokiu.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+           //services.AddDbContext<NokiuContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("Connection")));
         }
-
+      
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

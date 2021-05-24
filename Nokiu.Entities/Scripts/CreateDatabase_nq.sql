@@ -14,6 +14,7 @@ GO
 		FirstName            nvarchar(80)        not null,
 		LastName             nvarchar(250)       not null,
 		PersonName           nvarchar(150)       not null,
+		UserName			 nvarchar(50)		not null,
 		Password			 nvarchar(40)		 not null, 
 		Email				 nvarchar(150)		 not null, 
 		Phone				 nvarchar(50)		 not null, 

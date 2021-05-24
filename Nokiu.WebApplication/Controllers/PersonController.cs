@@ -2,7 +2,7 @@
 
 namespace Nokiu.WebApplication.Controllers
 {
-    public class UserController : Controller
+    public class PersonController : Controller
     {
         public IActionResult Index()
         {
