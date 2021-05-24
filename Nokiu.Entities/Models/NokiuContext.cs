@@ -154,7 +154,7 @@ namespace Nokiu.Entities.Models
             modelBuilder.Entity<Person>(entity =>
             {
                 entity.HasIndex(e => e.DocNumber)
-                    .HasName("UQ__Person__DA35A0AB5C285300")
+                    .HasName("UQ__Person__DA35A0ABE27B86A2")
                     .IsUnique();
 
                 entity.HasIndex(e => new { e.LastName, e.FirstName })
