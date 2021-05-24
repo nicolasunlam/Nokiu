@@ -17,38 +17,52 @@ namespace Nokiu.Entities.Models
 
         [Key]
         public int Id { get; set; }
+        
         [Required]
         [StringLength(80)]
         [Display(Name="Nombre")]
         public string FirstName { get; set; }
+       
         [Required]
         [StringLength(250)]
         [Display(Name = "Apellido")]
         public string LastName { get; set; }
+        
         [Required]
         [StringLength(50)]
         [Display(Name = "Nombre de Usuario")]
         public string UserName { get; set; }
+       
         [Required]
         [StringLength(40)]
         [Display(Name = "Contraseña")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+        
         [Required]
         [StringLength(150)]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+       
         [Required]
         [StringLength(50)]
         [Display(Name = "Teléfono")]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
+       
         [StringLength(30)]
         public string DocNumber { get; set; }
+       
         [Column(TypeName = "datetime")]
         public DateTime? DateLogin { get; set; }
+        
         [StringLength(250)]
         public string Photo { get; set; }
+       
         [Display(Name = "Dirección")]
         public int? AddressId { get; set; }
+        
         [Display(Name = "DNI")]
         public int? DocTypeId { get; set; }
         public int RoleId { get; set; }
@@ -56,18 +70,24 @@ namespace Nokiu.Entities.Models
         [ForeignKey(nameof(AddressId))]
         [InverseProperty("Person")]
         public virtual Address Address { get; set; }
+       
         [ForeignKey(nameof(DocTypeId))]
         [InverseProperty("Person")]
         public virtual DocType DocType { get; set; }
+       
         [ForeignKey(nameof(RoleId))]
         [InverseProperty("Person")]
         public virtual Role Role { get; set; }
+       
         [InverseProperty("Person")]
         public virtual ICollection<Company> Company { get; set; }
+       
         [InverseProperty("Person")]
         public virtual ICollection<Customer> Customer { get; set; }
+        
         [InverseProperty("Person")]
         public virtual ICollection<Employee> Employee { get; set; }
+        
         [InverseProperty("Person")]
         public virtual ICollection<Owner> Owner { get; set; }
     }
