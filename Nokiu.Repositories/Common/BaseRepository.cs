@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Nokiu.Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,14 +17,19 @@ namespace Repositories
             dbSet = ctx.Set<T>();
         }
 
-        public virtual void Save(T t)
+        public virtual bool Save(T t)
         {
-            
             dbSet.Add(t);
-            ctx.SaveChanges();
+
+            if (ctx.SaveChanges()>0)
+            {
+                return true;
+            }
+            
+            return false;
         }
 
-        public virtual List<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return dbSet.ToList();
         }
@@ -35,7 +41,7 @@ namespace Repositories
             return t;
         }
 
-        public virtual void Delete(long id)
+        public virtual bool Delete(long id)
         {
             T t = GetById(id);
 
@@ -43,11 +49,16 @@ namespace Repositories
             {
                 dbSet.Remove(t);
             }
+            if (ctx.SaveChanges()>0)
+            {
+                return true;
+            }
 
-            ctx.SaveChanges();
+            return false;
         }
 
-        public abstract void Update(T t);
+        public abstract bool Update(T t);
 
+        
     }
 }

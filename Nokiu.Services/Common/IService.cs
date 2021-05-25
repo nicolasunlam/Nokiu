@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Services
 {
     interface IService<T>
     {
-        void Save(T t);
+        bool Save(T t);
 
-        List<T> GetAll();
+        IEnumerable<T> GetAll();
 
         T GetById(long id);
 
-        void Delete(long id);
+        bool Delete(long id);
 
-        void Update(T t);
+        bool Update(T t);
     }
 }

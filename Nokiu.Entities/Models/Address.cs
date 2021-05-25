@@ -19,6 +19,7 @@ namespace Nokiu.Entities.Models
         [Required]
         [StringLength(50)]
         public string StreetNumber { get; set; }
+        
         [Required]
         [StringLength(50)]
         public string StreetName { get; set; }

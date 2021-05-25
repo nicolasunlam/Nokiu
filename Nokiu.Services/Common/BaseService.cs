@@ -13,19 +13,19 @@ namespace Services
             repo = Activator.CreateInstance(typeof(T), new object[] { contexto }) as T;
         }
 
-        public void Save(J j)
+        public bool Save(J j)
         {
-            repo.Save(j);
+            return repo.Save(j);
         }
 
-        public void Delete(long id)
+        public bool Delete(long id)
         {
-            repo.Delete(id);
+            return repo.Delete(id);
         }
 
-        public void Update(J j)
+        public bool Update(J j)
         {
-            repo.Update(j);
+           return repo.Update(j);
         }
 
         public J GetById(long id)
@@ -33,9 +33,10 @@ namespace Services
             return repo.GetById(id);
         }
 
-        public List<J> GetAll()
+        public IEnumerable<J> GetAll()
         {
             return repo.GetAll();
         }
+
     }
 }

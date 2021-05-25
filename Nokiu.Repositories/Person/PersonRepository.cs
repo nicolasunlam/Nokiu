@@ -1,28 +1,32 @@
 ﻿using Nokiu.Entities.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Repositories
 {
     public class PersonRepository : BaseRepository<Person>, IPersonRepository
     {
-        public PersonRepository(NokiuContext contexto) : base(contexto)
+        public PersonRepository(NokiuContext context) : base(context)
         {
 
         }
-        public override void Update(Person t)
+      
+        public override bool Update(Person t)
         {
             Person per = GetById(t.Id);
             per.FirstName = t.FirstName;
 
-            ctx.SaveChanges();
+            if (ctx.SaveChanges() > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public Person GetByUsername(String Username)
         {
             return ctx.Person.Where(pers => pers.FirstName == Username).FirstOrDefault();
         }
-
     }
 }

@@ -4,15 +4,14 @@ namespace Repositories
 {
     interface IRepository<T>
     {
-        void Save(T t);
+        bool Save(T t);
 
-        List<T> GetAll();
+        IEnumerable<T> GetAll();
 
         T GetById(long id);
 
-        void Delete(long id);
+        bool Delete(long id);
 
-        void Update(T t);
-
+        bool Update(T t);
     }
 }
