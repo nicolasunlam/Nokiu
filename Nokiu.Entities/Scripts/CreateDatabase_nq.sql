@@ -13,8 +13,7 @@ GO
 		Id                   int                 identity,
 		FirstName            nvarchar(80)        not null,
 		LastName             nvarchar(250)       not null,
-		PersonName           nvarchar(150)       not null,
-		UserName			 nvarchar(50)		not null,
+		UserName			 nvarchar(150)		 not null,
 		Password			 nvarchar(40)		 not null, 
 		Email				 nvarchar(150)		 not null, 
 		Phone				 nvarchar(50)		 not null, 
@@ -23,7 +22,7 @@ GO
 		Photo				 nvarchar(250)		 , 
 		AddressId			 int                 ,
 		DocTypeId			 int                 ,
-		RoleId				 int				 not null
+		RoleId				 int				 
    
 	   CONSTRAINT PK_PERSON PRIMARY KEY (Id)
 	)
@@ -229,21 +228,21 @@ GO
 	)
 	GO
 
-	ALTER TABLE "Person"
-	   ADD CONSTRAINT FK_PERSON_REFERENCE_ROLE 
-		FOREIGN KEY (RoleId)
-		REFERENCES Role (Id)
-	GO
-	ALTER TABLE "Person"
-	   ADD CONSTRAINT FK_PERSON_REFERENCE_DOC_TYPE 
-		FOREIGN KEY (DocTypeId)
-		REFERENCES DocType (Id)
-	GO
-	ALTER TABLE "Person"
-	   ADD CONSTRAINT FK_PERSON_REFERENCE_ADDRESS 
-		FOREIGN KEY (AddressId)
-		REFERENCES Address (Id)
-	GO
+	--ALTER TABLE "Person"
+	--   ADD CONSTRAINT FK_PERSON_REFERENCE_ROLE 
+	--	FOREIGN KEY (RoleId)
+	--	REFERENCES Role (Id)
+	--GO
+	--ALTER TABLE "Person"
+	--   ADD CONSTRAINT FK_PERSON_REFERENCE_DOC_TYPE 
+	--	FOREIGN KEY (DocTypeId)
+	--	REFERENCES DocType (Id)
+	--GO
+	--ALTER TABLE "Person"
+	--   ADD CONSTRAINT FK_PERSON_REFERENCE_ADDRESS 
+	--	FOREIGN KEY (AddressId)
+	--	REFERENCES Address (Id)
+	--GO
 
 	ALTER TABLE "Owner"
 	   ADD CONSTRAINT FK_OWNER_REFERENCE_PERSON 
@@ -349,38 +348,39 @@ GO
 		REFERENCES Permission (Id)	
 	GO
 
-	/*
+	use Nokiu
+	go
+	
 	--SET IDENTITY_INSERT Person ON
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Maria','Anders','Berlin','Germany','030-0074321','somepassword1', NULL, NULL, 1)
+	INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Maria','Anders','User01','123456','email1@email.com','555444', 65625625, 1, 1, 1)
 
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Maria','GOmez','Buenos Aires','Argentina','030-0074321','somepassword1', NULL, NULL, 1)
+		INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Jose','Perrez','User02','123456','email2@email.com','555444223', 6546431, 2, 2, 2)
 
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Juan','Manuel','Buenos Aires','Argentina','4444-5555','somepassword1', NULL, NULL, 1)
+	INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Oscar','Ruggiero','User03','123456','email3@email.com','555444', 65625625, 3, 3, 3 )
+	INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Johana','Bulling','User04','123456','email4@email.com','555444', 65625625, 4, 4, 4)
 
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Luciano','FiaminGO','Buenos Aires','Argentina','4555-6666','somepassword1', NULL, NULL, 1)
+	INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Mara','Rodrigues','User05','123456','email5@email.com','555444', 65625625, 5, 5, 5)
+		INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Quique','Hrabina','User06','123456','email6@email.com','555444223', 6546431, 6, 6, 6)
 
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Ivan','Logwiniuk','Buenos Aires','Argentina','4888-8888','somepassword1', NULL, NULL, 1)
+	INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Roberto','Pasucci','User07','123456','email7@email.com','555444', 65625625, 7, 7, 7)
 
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Nicolas','Orlando','Buenos Aires','Argentina','4454-2060','somepassword1', NULL, NULL, 1)
+	INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Nicolas','Hoarland','User08','123456','email8@email.com','555444', 65625625, 8, 8, 8)
+		INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+	VALUES('Maria','Anders','User09','123456','email9@email.com','555444', 65625625, 9, 9, 9)
+		INSERT INTO [Person] ([FirstName],[LastName],[UserName],[Password],[Email],[Phone],[DocNumber],[AddressId], [DocTypeId], [RoleId])
+		VALUES('Jose','Perrez','User10','123456','email10@email.com','555444223', 6546431, 10, 10, 10)
 
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Maria','Anders','Berlin','Germany','030-0074321','somepassword1', NULL, NULL, 1)
+	
 
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Maria','Anders','Berlin','Germany','030-0074321','somepassword1', NULL, NULL, 1)
-
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Maria','Anders','Berlin','Germany','030-0074321','somepassword1', NULL, NULL, 1)
-
-	INSERT INTO [Person] ([FirstName],[LastName],[City],[Country],[Phone],[Password],[DateLogin],[DateRegister],[Rol])
-	VALUES('Maria','Anders','Berlin','Germany','030-0074321','somepassword1', NULL, NULL, 1)
-	*/
+	
 
 
 
